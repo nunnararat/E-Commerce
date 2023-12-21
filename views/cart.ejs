@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <%- include ('layout') %>
+  <div class="container my-4">
+    <% if(cart.items.length>0){ %>
+    <h3>ตะกร้าสินค้า</h3>
+    <table class="table my-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">รหัสสินค้า</th>
+          <th scope="col">ชื่อสินค้า</th>
+          <th scope="col">จำนวน</th>
+          <th scope="col">ราคา</th>
+          <th scope="col">รวม</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cart.items.forEach((product)=>{ %>
+        <tr>
+          <td>
+            <a href="/products/show/<%= product.item %>"><%= product.item %></a>
+          </td>
+          <th><%= product.title %></th>
+          <td><%= product.qty %></td>
+          <td><%= formatMoney(product.price) %></td>
+          <th><%= formatMoney(product.price * product.qty) %></th>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+    <h2 align="right">ยอดชำระเงิน : <%= formatMoney(cart.total) %></h2>
+    <form class="form-group" action="/payment" method="post">
+        <script
+        src="http://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-name="Nara Shop"
+        data-key="pk_test_51OPoQRCiex5v2AD1FZxZ7KR7UgYfyF69LtMKs0fZG8TZrkfQHtI0nyitZGP4lhyM7ODRPMJ1f89haBKy5dAn1MkS00Fi8b9V2c"
+        data-description="Nara Shop IT"
+        data-amount="<%= cart.total*100 %>"
+        data-currency="thb"
+        ></script>
+        <input type="hidden" name="amount" value="<%= cart.total*100 %>">
+    </form>
+    <% } else { %>
+    <div class="alert alert-danger">
+        ไม่มีสินค้าในตะกร้า
+    </div>
+    <% }%>
+  </div>
+</body>
+</html>

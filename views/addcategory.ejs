@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <%- include ('layout') %>
+  <div class="container">
+    <div class="row">
+      <%- include ('sidebar') %>
+      <div class="col-lg-9 my-4">
+        <h2 align="center">แบบฟอร์มบันทึกหมวดหมู่สินค้า</h2>
+        <% if(locals.errors) { %>
+              <ul class="alert alert-danger" role="alert" style="padding: 30px;">
+                  <% Object.values(errors).forEach((error)=>{ %>
+                        <li style="margin-left: 10px;"><%= error.msg %></li>
+                  <% }) %>
+              </ul>
+        <% } %>
+        <form class="" action="/categories/add" method="post">
+          <div class="form-group">
+            <br>
+            <label for="">ชื่อหมวดหมู่</label>
+            <input type="text" name="name" value="" class="form-control">
+          </div>
+          <br>
+          <input type="submit"  value="บันทึกข้อมูล" class="btn btn-success">
+        </form>
+      </div> <!-- /.row -->
+    </div>
+    <!-- /.col-lg-9 -->
+  </div>
+</body>
+</html>
