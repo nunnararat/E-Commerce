@@ -18,19 +18,23 @@
                   <% }) %>
               </ul>
         <% } %>
+        <br>
         <form class="" action="/products/add" method="post">
           <div class="form-group">
             <label for="">ชื่อสินค้า</label>
             <input type="text" name="name" value="" class="form-control">
           </div>
+          <br>
           <div class="form-group">
             <label for="">รายละเอียด</label>
             <textarea name="description" rows="4" cols="80" class="form-control"></textarea>
           </div>
+          <br>
           <div class="form-group">
             <label for="">ราคา</label>
             <input type="number" name="price" value="" min=1 class="form-control">
           </div>
+          <br>
           <div class="form-group">
             <label for="">หมวดหมู่</label>
             <select class="form-control" name="category">
@@ -39,6 +43,7 @@
               <% }); %>
             </select>
           </div>
+          <br>
           <div class="form-group">
             <label for="">ภาพสินค้า</label>
             <input type="url" name="img" value="" min=1 class="form-control">

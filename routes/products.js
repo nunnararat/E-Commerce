@@ -6,7 +6,7 @@ var mongodb = require('mongodb');
 var db = require('monk')('127.0.0.1:27017/E-CommerceDB');
     
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/add', async function(req, res, next) {    
   var categories = db.get('categories');
   var category = await categories.find({}, {});
   res.render('addproduct', {

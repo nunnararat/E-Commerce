@@ -19,7 +19,7 @@
           <img src="<%= product.img %>" alt="" width="600px" height="500px">
           <div class="card-body">
             <h3 class="card-title">ชื่อสินค้า : <%= product.name %></h3>
-            <h4>ราคา : $<%= formatMoney(product.price)%></h4>
+            <h4>ราคา : ฿<%= formatMoney(product.price)%></h4>
             <p class="card-text"><%= product.description %></p>
             <br>
             <form class="form-group" action="/products/cart/" method="post">

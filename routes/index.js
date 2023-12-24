@@ -14,5 +14,5 @@ router.get('/', async function(req, res, next) {
 
   res.render('index', {categories:category, products:product});
 });
-
+  
 module.exports = router;
